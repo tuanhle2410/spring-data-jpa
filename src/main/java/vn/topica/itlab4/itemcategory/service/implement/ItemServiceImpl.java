@@ -18,11 +18,11 @@ public class ItemServiceImpl implements ItemService {
 
     @Transactional
     public Item getById(Long id) {
-        return itemRepository.findOne(id);
+        return itemRepository.findById(id);
     }
 
     @Override
     public List<Item> findByCategory(String categoryName, int pageIndex, int pageSize) {
-        return itemRepository.findByCategory(categoryName, new PageRequest(pageIndex,pageSize)).getContent();
+        return itemRepository.findAll(categoryName, PageRequest.of(pageIndex,pageSize)).getContent();
     }
 }

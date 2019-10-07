@@ -22,4 +22,7 @@ public class Category {
 
     @Column(name = "type_id")
     private int typeId;
+
+    public Category() {
+    }
 }

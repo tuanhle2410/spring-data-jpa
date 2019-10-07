@@ -11,13 +11,12 @@ import vn.topica.itlab4.itemcategory.model.Item;
 import java.util.List;
 
 public interface ItemRepository extends PagingAndSortingRepository<Item, Integer>, CrudRepository<Item, Integer> {
-    Page<Item> findByCategory(String categoryName, Pageable pageable);
 
-    @Query("SELECT obj FROM item obj, item_category, category " +
-            "WHERE item.id = item_category.item_id " +
-            "AND item_category.category_id = category.id " +
-            "AND category.name = :categoryName")
-    List<Item> findByCategory(@Param("categoryName") String categoryName);
+    @Query("SELECT obj FROM Item obj, ItemCategory ic, Category c " +
+            "WHERE obj.id = ic.itemId " +
+            "AND ic.categoryId = c.id " +
+            "AND c.name = :categoryName")
+    Page<Item> findAll(String categoryName, Pageable pageable);
 
-    Item findOne(Long id);
+    Item findById(Long id);
 }

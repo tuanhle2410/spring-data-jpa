@@ -7,13 +7,11 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
 import vn.topica.itlab4.itemcategory.model.Category;
 
-import java.util.List;
-
 public interface CategoryRepository extends PagingAndSortingRepository<Category, Integer> {
-    Page<Category> findByType(String typeName, Pageable pageable);
 
-    @Query("SELECT obj FROM category obj, type " +
-            "WHERE category.type_id = type.id " +
-            "AND type.name = :typeName")
-    List<Category> findByType(@Param("typeName") String typeName);
+
+    @Query("SELECT obj FROM Category obj, Type t " +
+            "WHERE obj.typeId = t.id " +
+            "AND t.name = :typeName")
+    Page<Category> findByType(@Param("typeName") String typeName, Pageable pageable);
 }

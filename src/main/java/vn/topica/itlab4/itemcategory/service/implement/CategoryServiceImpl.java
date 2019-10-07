@@ -23,6 +23,6 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public List<Category> findByType(String typeName, int pageIndex, int pageSize) {
-        return categoryRepository.findByType(typeName, new PageRequest(pageIndex,pageSize)).getContent();
+        return categoryRepository.findByType(typeName, PageRequest.of(pageIndex,pageSize)).getContent();
     }
 }

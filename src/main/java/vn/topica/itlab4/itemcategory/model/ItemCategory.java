@@ -8,8 +8,12 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Data
 @Entity
-@Table(name = "item_categoy")
+@Table(name = "item_category")
 public class ItemCategory {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
 
     @Column(name = "item_id")
     private int itemId;
